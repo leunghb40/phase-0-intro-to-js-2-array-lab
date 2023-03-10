@@ -20,7 +20,6 @@ describe('index.js', function () {
         function destructivelyAppendCat(name) {
           cats.push(name);
         }
-        
         destructivelyAppendCat('Ralph');
         expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield", "Ralph"]);
       });
@@ -31,7 +30,6 @@ describe('index.js', function () {
         function destructivelyPrependCat(name) {
           cats.unshift(name);
         }
-        
         destructivelyPrependCat("Bob");
         expect(cats).to.have.ordered.members(["Bob", "Milo", "Otis", "Garfield"]);
       });
@@ -42,7 +40,6 @@ describe('index.js', function () {
         function destructivelyRemoveLastCat() {
           cats.pop();
         }
-        
         destructivelyRemoveLastCat();
         expect(cats).to.have.ordered.members(["Milo", "Otis"]).and.to.not.include('Garfield');
       });
@@ -53,7 +50,6 @@ describe('index.js', function () {
         function destructivelyRemoveFirstCat() {
           cats.shift();
         }
-
         destructivelyRemoveFirstCat();
         expect(cats).to.have.ordered.members(["Otis", "Garfield"]).and.to.not.include('Milo');
       });
@@ -65,7 +61,6 @@ describe('index.js', function () {
           const newCats = [...cats, name];
           return newCats;
         }
-    
         const newCats = appendCat("Broom");
         expect(appendCat("Broom")).to.have.ordered.members(["Milo", "Otis", "Garfield", "Broom"]);
         expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
@@ -78,7 +73,6 @@ describe('index.js', function () {
           const newCats = [name, ...cats];
           return newCats;
         }
-    
         const newCats = prependCat("Arnold");
         expect(prependCat("Arnold")).to.have.ordered.members(["Arnold", "Milo", "Otis", "Garfield"]);
         expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
@@ -91,7 +85,6 @@ describe('index.js', function () {
           const newCats = cats.slice(0, cats.length - 1);
           return newCats;
         }
-        
         expect(removeLastCat()).to.have.ordered.members(["Milo", "Otis"]);
         expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
       });
@@ -103,7 +96,6 @@ describe('index.js', function () {
           const newCats = cats.slice(1);
           return newCats;
         }
-
         expect(removeFirstCat()).to.have.ordered.members(["Otis", "Garfield"]);
         expect(cats).to.have.ordered.members(["Milo", "Otis", "Garfield"]);
       });
